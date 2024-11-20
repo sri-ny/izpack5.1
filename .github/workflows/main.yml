@@ -1,7 +1,11 @@
-name: Build IzPack Installer
+name: Build and Test with Debug Logging
 
 on:
   push:
+    branches:
+      - main
+      - 'release/*'
+  pull_request:
     branches:
       - main
 
@@ -13,19 +17,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up JDK
+      - name: Set up JDK 11
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '11'
 
-      - name: Create target directory
-        run: mkdir -p target
-
-      - name: Build with Maven
+      - name: Run Maven Clean Package with Debug Logging
         run: |
-          mvn clean package -X > build.log 2>&1
-          cat build.log
+          set -o pipefail
+          mvn clean package -X | tee build.log
+        env:
+          JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.25-9/x64
+          JAVA_HOME_11_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/11.0.25-9/x64
+
+      - name: Display Build Log if Exists
+        if: failure()
+        run: cat build.log || echo "No build log generated."
 
       - name: Upload Build Log
         uses: actions/upload-artifact@v4
