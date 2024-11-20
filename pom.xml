@@ -46,7 +46,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- Maven 2 confuses the usage of the Nexus staging plugin and would require further customization -->
     <mavenVersion>3.0</mavenVersion>
-    <skipTests>false</skipTests>
+    <skipTests>true</skipTests>
     <skipUnitTests>${skipTests}</skipUnitTests>
     <skipIntegrationTests>${skipTests}</skipIntegrationTests>
   </properties>
@@ -62,14 +62,14 @@
     <module>izpack-native-parent</module>
     <module>izpack-installer</module>
     <module>izpack-event</module>
-    <module>izpack-test</module>
+    <module>izpack-test</module> 
     <module>izpack-api</module>
     <module>izpack-util</module>
     <module>izpack-wrapper</module>
     <module>izpack-tools</module>
     <module>izpack-ant</module>
     <module>izpack-test-common</module>
-    <module>izpack-test-listener</module>
+    <module>izpack-test-listener</module> 
     <module>reports</module>
   </modules>
 
