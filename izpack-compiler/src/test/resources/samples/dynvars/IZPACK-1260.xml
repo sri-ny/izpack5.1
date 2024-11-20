@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<izpack:installation version="5.0" xmlns:izpack="http://izpack.org/schema/installation"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
+    <info>
+        <appname>Test Installation</appname>
+        <appversion>1.4 beta 666</appversion>
+        <authors>
+            <author name="Super sora" email="sora@superman.org"/>
+        </authors>
+        <url>http://www.anotherworld-inspace-website.net/</url>
+
+    </info>
+
+    <guiprefs width="640" height="480" resizable="yes"/>
+    <locale>
+        <langpack iso3="eng"/>
+    </locale>
+
+    <variables>
+      <variable name="INSTALL_PATH" value="Path"/>
+    </variables>
+
+    <!-- in the example of IZPACK-1260 the both variables are named "previous.wrapper.conf"
+         but because our test implementation does compare names only, we have to distinguish between this variables -->
+    <dynamicvariables>
+      <variable name="previous.wrapper.conf1" value="${INSTALL_PATH}/conf/wrapper.conf" condition="haveInstallPath" />
+      <variable name="previous.wrapper.conf2" value="${INSTALL_PATH}/wrapper.conf" condition="haveInstallPath+!previous.wrapper.conf.exists" />
+    </dynamicvariables>
+
+    <conditions>
+      <condition id="haveInstallPath" type="exists" > <variable>INSTALL_PATH</variable> </condition>
+      <condition id="previous.wrapper.conf.exists" type="exists" > <file>${previous.wrapper.conf1}</file> </condition>
+    </conditions>
+
+    <panels>
+        <panel classname="HelloPanel"/>
+        <panel classname="SimpleFinishPanel"/>
+    </panels>
+
+    <packs>
+        <pack name="Base" required="yes">
+            <description>The base files</description>
+        </pack>
+    </packs>
+</izpack:installation>

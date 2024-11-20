@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<izpack:installation version="5.0" xmlns:izpack="http://izpack.org/schema/installation"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
+    <info>
+        <appname>Test Installation</appname>
+        <appversion>1.4 beta 666</appversion>
+        <authors>
+            <author name="Super sora" email="sora@superman.org"/>
+        </authors>
+        <url>http://www.anotherworld-inspace-website.net/</url>
+
+    </info>
+
+    <guiprefs width="640" height="480" resizable="yes"/>
+    <locale>
+        <langpack iso3="eng"/>
+    </locale>
+
+    <variables>
+        <variable name="file"     value="file" />
+        <variable name="entry"    value="entry" />
+        <variable name="section"  value="section" />
+        <variable name="key"      value="key" />
+
+        <variable name="regkey"     value="regkey" />
+        <variable name="regvalue"   value="regvalue" />
+
+        <variable name="executable" value="executable"/>
+        <variable name="dir"        value="dir"/>
+        <variable name="arg"        value="arg"/>
+    </variables>
+    
+    <dynamicvariables>
+        <variable name="ini" type="ini"     file="${file}" key="${key}" section="${section}"/>
+        <variable name="opt" type="options" file="${file}" key="${key}" />
+        <variable name="xml" type="xml"     file="${file}" key="${key}" />
+
+        <variable name="jar_ini" type="ini"     jarfile="${file}" entry="${entry}" key="${key}" section="${section}"/>
+        <variable name="jar_opt" type="options" jarfile="${file}" entry="${entry}" key="${key}" />
+        <variable name="jar_xml" type="xml"     jarfile="${file}" entry="${entry}" key="${key}" />
+
+        <variable name="zip_ini" type="ini"     zipfile="${file}" entry="${entry}" key="${key}" section="${section}"/>
+        <variable name="zip_opt" type="options" zipfile="${file}" entry="${entry}" key="${key}" />
+        <variable name="zip_xml" type="xml"     zipfile="${file}" entry="${entry}" key="${key}" />
+
+        <variable name="reg" regkey="${regkey}" regvalue="${regvalue}" />
+
+        <variable name="exec" executable="${executable}" dir="${dir}" >
+          <arg>${arg}</arg>
+        </variable>
+
+    </dynamicvariables>
+
+    <panels>
+        <panel classname="HelloPanel"/>
+        <panel classname="SimpleFinishPanel"/>
+    </panels>
+
+    <packs>
+        <pack name="Base" required="yes">
+            <description>The base files</description>
+        </pack>
+    </packs>
+</izpack:installation>

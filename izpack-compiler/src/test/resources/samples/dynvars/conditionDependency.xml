@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<izpack:installation version="5.0" xmlns:izpack="http://izpack.org/schema/installation"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
+    <info>
+        <appname>Test Installation</appname>
+        <appversion>1.4 beta 666</appversion>
+        <authors>
+            <author name="Super sora" email="sora@superman.org"/>
+        </authors>
+        <url>http://www.anotherworld-inspace-website.net/</url>
+    </info>
+
+    <guiprefs width="640" height="480" resizable="yes"/>
+    <locale>
+        <langpack iso3="eng"/>
+    </locale>
+
+    <variables>
+    </variables>
+
+    <dynamicvariables>
+
+        <variable name="var1" value="value1" condition="cond1" />
+        <variable name="var2" value="value2" condition="cond2" />
+        <variable name="var3" value="value3" condition="cond3" />
+        <variable name="var4" value="value4" condition="cond4" />
+        <variable name="var5" value="value5" condition="cond5" />
+
+
+        <variable name="var20" value="value20" condition="cond20" />
+        <variable name="var21" value="value21" condition="cond21" />
+        <variable name="var22" value="value22" condition="cond22" />
+        <variable name="var23" value="value23" condition="cond23" />
+
+        <variable name="var50" value="value50" condition="cond50" />
+        <variable name="var51" value="value51" condition="cond51" />
+        <variable name="var52" value="value52" condition="cond52" />
+
+        <variable name="var60" value="value60" condition="cond60" />
+
+        <variable name="var90" value="value90" condition="cond90" />
+        <variable name="var91" value="value91" condition="cond91" />
+        <variable name="var92" value="value92" condition="cond92" />
+        <variable name="var93" value="value93" condition="cond93" />
+        <variable name="var94" value="value94" condition="cond94" />
+
+        <!-- arguments for the conditions;
+             each cond gets its own arguments, because otherwise the ordering introduced
+             by one condition could hide a missing ordering of another 
+        -->
+        <variable name="arg1a" value="arg1a" /> <variable name="arg1b" value="arg1b" />
+        <variable name="arg2a" value="arg2a" /> <variable name="arg2b" value="arg2b" />
+        <variable name="arg3a" value="arg3a" /> <variable name="arg3b" value="arg3b" />
+        <variable name="arg4a" value="arg4a" /> <variable name="arg4b" value="arg4b" />
+        <variable name="arg5a" value="arg5a" /> <variable name="arg5b" value="arg5b" />
+
+        <variable name="arg20" value="arg20" />
+        <variable name="arg21" value="arg21" />
+        <variable name="arg22" value="arg22" />
+        <variable name="arg23" value="arg23" />
+
+        <variable name="arg50" value="arg50" />
+        <variable name="arg51" value="arg51" />
+        <variable name="arg52" value="arg52" />
+
+        <variable name="arg60a" value="arg60a" /> <variable name="arg60b" value="arg60b" />
+        <variable name="arg90a" value="arg90a" /> <variable name="arg90b" value="arg90b" />
+        <variable name="arg91a" value="arg91a" /> <variable name="arg91b" value="arg91b" />
+        <variable name="arg92a" value="arg92a" /> <variable name="arg92b" value="arg92b" />
+        <variable name="arg93"  value="arg93" />
+        <variable name="arg94"  value="arg94" />
+
+    </dynamicvariables>
+
+    <conditions>
+      <condition id="cond1" type="comparenumerics" >
+        <arg1>${arg1a}</arg1> <operator>eq</operator> <arg2>${arg1b}</arg2>
+      </condition>
+      <condition id="cond2" type="compareversions" >
+        <arg1>${arg2a}</arg1> <operator>eq</operator> <arg2>${arg2b}</arg2>
+      </condition>
+      <condition id="cond3" type="compareversionsmajor" >
+        <arg1>${arg3a}</arg1> <operator>eq</operator> <arg2>${arg3b}</arg2>
+      </condition>
+      <condition id="cond4" type="contains" >
+        <string>${arg4a}</string> <value>${arg4b}</value>
+      </condition>
+      <condition id="cond5" type="contains" >
+        <file>${arg5a}</file> <value>${arg5b}</value>
+      </condition>
+
+      <condition id="cond20" type="empty" >      <dir>${arg20}</dir>      </condition>
+      <condition id="cond21" type="empty" >     <file>${arg21}</file>     </condition>
+      <condition id="cond22" type="empty" >   <string>${arg22}</string>   </condition>
+      <condition id="cond23" type="exists" >    <file>${arg23}</file>     </condition>
+
+
+      <!-- next conditions do not resolve variables, but the argument is the name of a variable  -->
+      <condition id="cond50" type="variable" >    <name>arg50</name> <value>value</value> </condition>
+      <condition id="cond51" type="empty" >    <variable>arg51</variable> </condition>
+      <condition id="cond52" type="exists" >   <variable>arg52</variable> </condition>
+      <condition id="cond60" type="contains" > <variable>arg60a</variable> <value>${arg60b}</value>
+      </condition>
+
+      <condition id="cond90" type="and">
+        <condition type="exists"> <variable>arg90a</variable> </condition>
+        <condition type="exists"> <variable>arg90b</variable> </condition>
+      </condition>
+      <condition id="cond91" type="or">
+        <condition type="exists"> <variable>arg91a</variable> </condition>
+        <condition type="exists"> <variable>arg91b</variable> </condition>
+      </condition>
+      <condition id="cond92" type="xor">
+        <condition type="exists"> <variable>arg92a</variable> </condition>
+        <condition type="exists"> <variable>arg92b</variable> </condition>
+      </condition>
+      <condition id="cond93" type="ref" refid="cond93a"> </condition>
+      <condition id="cond93a" type="exists"> <variable>arg93</variable> </condition>
+      <condition id="cond94" type="not" > <condition type="ref" refid="cond94a"/> </condition>
+      <condition id="cond94a" type="exists"> <variable>arg94</variable> </condition>
+    </conditions>
+
+    <panels>
+        <panel classname="HelloPanel"/>
+        <panel classname="SimpleFinishPanel"/>
+    </panels>
+
+    <packs>
+        <pack name="Base" required="yes">
+            <description>The base files</description>
+        </pack>
+    </packs>
+</izpack:installation>

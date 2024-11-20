@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<aaaa xmlns:xi="http://www.w3.org/2001/XInclude">
+    <xi:include href="content-fragment.xml" xpointer="element(/1/1)"/>
+    <xi:include href="content-fragment.xml" xpointer="element(/1/2)"/>
+    <xi:include href="content-fragment.xml" xpointer="element(/1/1)"/>
+    <xi:include href="content-fragment.xml" xpointer="element(/1/2)"/>
+</aaaa>

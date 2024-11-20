@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<izpack:installation version="5.0" xmlns:izpack="http://izpack.org/schema/installation"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
+    <info>
+        <appname>Test Installation</appname>
+        <appversion>1.4 beta 666</appversion>
+        <authors>
+            <author name="Super sora" email="sora@superman.org"/>
+        </authors>
+        <url>http://www.anotherworld-inspace-website.net/</url>
+    </info>
+
+    <guiprefs width="640" height="480" resizable="yes"/>
+    <locale>
+        <langpack iso3="eng"/>
+    </locale>
+
+    <variables>
+    </variables>
+
+    <dynamicvariables>
+
+        <variable name="var1" value="value1" condition="cond1a+cond1b" />
+        <variable name="var2" value="value2" condition="@cond2a || cond2b" />
+
+        <!-- arguments for the conditions;
+             each cond gets its own arguments, because otherwise the ordering introduced
+             by one condition could hide a missing ordering of another 
+        -->
+        <variable name="arg1a" value="arg1a" />
+        <variable name="arg1b" value="arg1b" />
+        <variable name="arg2a" value="arg2a" />
+        <variable name="arg2b" value="arg2b" />
+    </dynamicvariables>
+
+    <conditions>
+      <condition id="cond1a" type="variable" > <name>arg1a</name> <value>value</value> </condition>
+      <condition id="cond1b" type="variable" > <name>arg1b</name> <value>value</value> </condition>
+      <condition id="cond2a" type="variable" > <name>arg2a</name> <value>value</value> </condition>
+      <condition id="cond2b" type="variable" > <name>arg2b</name> <value>value</value> </condition>
+    </conditions>
+
+    <panels>
+        <panel classname="HelloPanel"/>
+        <panel classname="SimpleFinishPanel"/>
+    </panels>
+
+    <packs>
+        <pack name="Base" required="yes">
+            <description>The base files</description>
+        </pack>
+    </packs>
+</izpack:installation>

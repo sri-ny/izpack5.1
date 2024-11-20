@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<izpack:shortcuts version="5.0"
+                  xmlns:izpack="http://izpack.org/schema/shortcuts"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://izpack.org/schema/shortcuts http://izpack.org/schema/5.0/izpack-shortcuts-5.0.xsd">
+
+    <programGroup defaultName="IzPack ${project.version}" location="applications"/>
+
+    <shortcut
+            terminal="false"
+            name="IzPack Online Documentation"
+            programGroup="yes"
+            desktop="yes"
+            applications="no"
+            startMenu="yes"
+            startup="no"
+            initialState="noShow"
+            iconFile="$INSTALL_PATH/icons/izpack_wiki_32.png"
+            url="https://izpack.atlassian.net/wiki/display/IZPACK/IzPack+Home"
+            type="Link"
+            createForAll="false"
+            categories="Application;Development;"
+            description="Browse the IzPack Wiki site online">
+
+        <createForPack name="Core"/>
+    </shortcut>
+
+    <shortcut
+            terminal="false"
+            name="Izpack Uninstaller"
+            programGroup="yes"
+            desktop="yes"
+            applications="no"
+            startMenu="no"
+            startup="no"
+            target="java"
+            commandLine="-jar &quot;$INSTALL_PATH/Uninstaller/uninstaller.jar&quot;"
+            initialState="noShow"
+            iconFile="$INSTALL_PATH/icons/izpack_uninstall_32.png"
+            workingDirectory=""
+            type="Application"
+            encoding="UTF-8"
+            KdeSubstUID="false"
+            createForAll="false"
+            categories="Application;Development;"
+            tryexec="java -jar &quot;$INSTALL_PATH/Uninstaller/uninstaller.jar&quot;"
+            description="This uninstalls IzPack ${project.version}">
+
+        <createForPack name="Core"/>
+    </shortcut>
+
+</izpack:shortcuts>

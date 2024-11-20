@@ -1,0 +1,43 @@
+<assembly>
+    <id>standalone</id>
+    <formats>
+        <format>jar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <dependencySets>
+        <dependencySet>
+            <unpack>true</unpack>
+            <scope>runtime</scope>
+            <includes>
+                <include>${project.groupId}:izpack-native</include>
+                <include>${project.groupId}:izpack-util</include>
+                <include>${project.groupId}:izpack-core</include>
+            </includes>
+            <useStrictFiltering>true</useStrictFiltering>
+            <outputDirectory>/</outputDirectory>
+        </dependencySet>
+
+        <dependencySet>
+            <!--
+            <unpack>false</unpack>
+             -->
+            <unpack>true</unpack>
+            <scope>runtime</scope>
+            <excludes>
+                <exclude>${project.groupId}:izpack-util</exclude>
+                <exclude>${project.groupId}:izpack-compiler</exclude>
+                <exclude>${project.groupId}:izpack-native</exclude>
+            </excludes>
+            <!--
+            <outputDirectory>lib</outputDirectory>
+             -->
+            <outputDirectory>/</outputDirectory>
+        </dependencySet>
+    </dependencySets>
+    <fileSets>
+        <fileSet>
+            <directory>${project.build.outputDirectory}</directory>
+            <outputDirectory>/</outputDirectory>
+        </fileSet>
+    </fileSets>
+</assembly>
